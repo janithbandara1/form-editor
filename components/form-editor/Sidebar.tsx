@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Form } from "@/types/form"
 import { Button } from "@/components/ui/button"
-import { ChevronLeftIcon, SettingsIcon, PlusIcon, XIcon } from "lucide-react"
+import { ChevronLeftIcon, SettingsIcon, XIcon } from "lucide-react"
 import AddFieldDialog from "./AddFieldDialog"
 import WelcomeScreenSettings from "./WelcomeScreenSettings"
 import EndScreenSettings from "./EndScreenSettings"

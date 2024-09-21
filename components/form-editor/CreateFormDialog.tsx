@@ -1,17 +1,17 @@
-import { useState } from "react"
-import { Form } from "@/types/form"
-import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { PlusIcon } from "lucide-react"
+import { useState } from "react";
+import { Form } from "@/types/form";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { PlusIcon } from "lucide-react";
 
 type CreateFormDialogProps = {
-  createForm: (newForm: Form) => void
-}
+  createForm: (newForm: Form) => void;
+};
 
 export default function CreateFormDialog({ createForm }: CreateFormDialogProps) {
-  const [isOpen, setIsOpen] = useState(false)
-  const [newFormName, setNewFormName] = useState("")
+  const [isOpen, setIsOpen] = useState(false);
+  const [newFormName, setNewFormName] = useState("");
 
   const handleCreateForm = () => {
     const newForm: Form = {
@@ -21,19 +21,20 @@ export default function CreateFormDialog({ createForm }: CreateFormDialogProps) 
         title: "Welcome",
         description: "Please fill out this form",
         buttonText: "Start",
-        image: "",
+        buttonColor: "default", // You can change this based on your needs
+        imageUrl: "", // Placeholder for image URL
         placement: "right"
       },
       endScreen: {
         title: "Thank you",
         description: "Your response has been recorded"
       },
-      fields: []
-    }
-    createForm(newForm)
-    setIsOpen(false)
-    setNewFormName("")
-  }
+      fields: [] // Initialize with an empty array or populate as needed
+    };
+    createForm(newForm);
+    setIsOpen(false);
+    setNewFormName("");
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -57,5 +58,5 @@ export default function CreateFormDialog({ createForm }: CreateFormDialogProps) 
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

@@ -31,6 +31,12 @@ export default function Preview({ currentForm, currentPage, setCurrentPage }: Pr
     validateEmail(value)
   }
 
+  const handleNextPage = () => {
+    if (currentPage < totalPages - 1 && !emailError) {
+      setCurrentPage(currentPage + 1)
+    }
+  }
+
   const renderWelcomeScreen = () => {
     const { title, description, buttonText, buttonColor, imageUrl, placement } = currentForm.welcomeScreen
     const imageContent = imageUrl && (
@@ -42,7 +48,7 @@ export default function Preview({ currentForm, currentPage, setCurrentPage }: Pr
       <div className={`w-full ${imageUrl ? 'md:w-1/2' : ''}`}>
         <h2 className="text-2xl font-bold mb-4">{title}</h2>
         <p className="mb-4">{description}</p>
-        <Button variant={buttonColor || "default"}>{buttonText}</Button>
+        <Button variant={buttonColor || "default"} onClick={handleNextPage}>{buttonText}</Button>
       </div>
     )
 
@@ -83,6 +89,7 @@ export default function Preview({ currentForm, currentPage, setCurrentPage }: Pr
           />
           
           {emailError && <p className="text-red-500">{emailError}</p>}
+          <Button onClick={handleNextPage} disabled={!!emailError}>Next</Button>
         </div>
       )
     }
